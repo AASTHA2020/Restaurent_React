@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import Card from './Card.jsx';
+import React, { useEffect, useState } from 'react'; 
+import Card from './Card'; 
 import TextField from '@mui/material/TextField';
-import { restaurants } from "./restaurant.js";
+import { restaurants } from "./restaurant";
+import { ToastContainer } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 
 function RestaurantMenu() {
-  const [restaurant, setRestaurant] = useState(restaurants);
-  const [searchInput, setSearchInput] = useState("");
+  const [restaurant, setRestaurant] = useState(restaurants); 
+  const [searchInput, setSearchInput] = useState(""); 
 
-  // This effect runs whenever searchInput changes
   useEffect(() => {
     if (searchInput === '') {
       setRestaurant(restaurants);
@@ -24,23 +25,23 @@ function RestaurantMenu() {
     <>
       <div className="form"> 
         <TextField
-          id="outlined-basic"
+          id="outlined-basic" 
           label="Search"
           variant="outlined"
-          className='inp'
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.currentTarget.value)}
+          className='inp' 
+          value={searchInput} 
+          onChange={(e) => setSearchInput(e.currentTarget.value)} 
         />
       </div>
       <div className="restaurant-container">
         {restaurant.map((item, idx) => (
           <Card
-            key={idx}
-            name={item.name}
-            cuisine={item.cuisine}
-            location={item.location}
-            rating={item.rating}
-            image={item.image}
+            key={idx} 
+            name={item.name} 
+            cuisine={item.cuisine} 
+            location={item.location} 
+            rating={item.rating} 
+            image={item.image} 
           />
         ))}
       </div>
